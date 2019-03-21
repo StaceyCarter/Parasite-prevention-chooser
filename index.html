@@ -104,7 +104,7 @@ fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&amp;
 })
                         </code></pre>
                         
-                        <p>The response is sent to the frontend which checks if it is in the USA and extracts the state and <a href="http://county.It">county.</a> This information is uses to obtain location specific data pertaining to each of the parasitic diseases.</p>
+                        <p>The response is sent to the frontend which checks if it is in the USA and extracts the state and county. This information is used to obtain location specific data pertaining to each of the parasitic diseases.</p>
                         
                         <p>Information about each of the diseases and their prevalence was obtained from publicly available data I retrieved from a website using Node.js. </p>
                         
@@ -160,7 +160,7 @@ fetch(`https://maps.capcvet.org/v2/states/infection-risks?disease=${diseases[dis
                         
                         <p>Overall, I would like to make it a more personalized experience by factoring in some questions regarding the pet’s lifestyle (eg. if it goes hiking). This way I could also write some functions to give a more personalized product recommendation which could be accompanied with purchase links.</p>
                         
-                        <p>To see the code:</p>
+                        
                     
                         
                     </div>
@@ -195,12 +195,13 @@ fetch(`https://maps.capcvet.org/v2/states/infection-risks?disease=${diseases[dis
                     
                     
                 </div>
+                <hr class="break-line"></hr>
                 <div class="row sub-section text-block">
                     <div class="description-box col-md-8 col-md-offset-1">   
                         <h3 class="category-heading">Space Invaders Game</h3>
-                        <p>I recently completed a course on EdX, "How to code: simple data". As the final project for the course, I created a space invaders game using racket, a teaching language based on lisp. Given lisp's lack of loops, I created the entire program using recursive functions. </p>
+                        <p>I recently completed a <a href="https://courses.edx.org/certificates/6cab91bc64474e0885eb4a72eb9c0b29"></a>, "How to code: simple data". As the final project for the course, I created a space invaders game using racket, a teaching language based on lisp. Given lisp's lack of loops, I created the entire program using recursive functions. </p>
 
-                        <p>The game runs by manipulating data. Different components are advanced according to their speeds and added or deleted from linked lists according to other events in the game (eg. collisions and key presses). Since racket lists are immutable, a new list was created each time with the addition or absence of components, this made it easy to test the logic of the game.   </p>
+                        <p>The game runs by manipulating data. Different components are advanced according to their speeds and added or deleted from linked lists according to other events in the game (eg. collisions and key presses). Since racket lists are immutable, a new list was created each time with the addition or absence of components. This made it easy to test the logic of the game.   </p>
                         
                         <p>A big-bang function keeps the game going, repeatedly calling an update function that creates new data for the next frame. On each tick of the big bang, new images of your tank, missiles and invaders are rendered to the screen, giving the effect of movement. </p>
                         
@@ -208,7 +209,7 @@ fetch(`https://maps.capcvet.org/v2/states/infection-risks?disease=${diseases[dis
                         
                        
                     </div>
-                    <div class="col-md-3 col-sm-3">
+                    <div class="col-md-3 col-sm-3 space-invaders">
                     <img src="spaceInvaders.gif" alt="Short video of spaceinvaders gameplay" height=400px>
                 </div>
                     <div class="links col-md-4 col-md-offset-4">
@@ -229,15 +230,15 @@ fetch(`https://maps.capcvet.org/v2/states/infection-risks?disease=${diseases[dis
                 
 
                 <div class="row">
-                        <h2 class="text-center sub-heading">Learning New Things</h2>
-                        <p class = "category-explanation-paragraph text-center">
-                            I use a combination of Treehouse, Free Code Camp and HackerRank to learn and practice coding. 
-                            Click on the links below to see my profile on each of these.
+                        <h2 class="text-center sub-heading">Learning to Code</h2>
+                        <p class = "category-explanation-paragraph text-center text-block">
+                            I use a combination of Treehouse, Free Code Camp and HackerRank to learn and practice coding (click on the links below to see my profiles). 
+                            I have also completed a number of free courses on Udacity and Codecademy.
 
                         </p>
                 </div>
 
-                <div class= "row">
+                <div class= "row learning-links">
 
                     <div class="links treehouse col-md-4">
                             
@@ -278,18 +279,6 @@ fetch(`https://maps.capcvet.org/v2/states/infection-risks?disease=${diseases[dis
 
                 </div>
                 
-                <hr class="break-line"></hr>
-
-
-               <div class="video">
-
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/NdvNchFnNnY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-               
-                </div>
-
-
-
-               
 
             </main>
             <footer>

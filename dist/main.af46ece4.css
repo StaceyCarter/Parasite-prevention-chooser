@@ -54,6 +54,7 @@
 .text-block {
     color: #172148;
     font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
     line-height: 1.6;
     background: radial-gradient(ellipse at center, white, transparent 75%);
 }
@@ -87,7 +88,11 @@ body {
 }
 
 .links {
-   margin-top: 2%;  
+   margin-top: 4%;  
+}
+
+.learning-links{
+    margin-bottom: 10%;
 }
 
 .break-line {
@@ -95,16 +100,12 @@ body {
     color: #FF8776;
     width: 95%;
     border-top: 20px dashed #FF8776;
-    margin-top: 10%;
+    margin-top: 2.5%;
+    margin-bottom: 5%;
 }
 
-.video {
-    padding: 10% 0 15% 0;
-}
-
-iframe {
-    display: block;
-    margin: 0 auto;
+.space-invaders {
+    padding-top: 4%;
 }
 
 .svg-container {
