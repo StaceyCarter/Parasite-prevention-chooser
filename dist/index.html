@@ -74,62 +74,151 @@
             <main>
                 <div class="row sub-section text-block">
                     <div class="description-box col-md-10 col-md-offset-1">   
-                        <h3 class="category-heading">Parasite prevalence calculator for dogs in the USA</h3>
-                        <p>
-                            As a veterinarian, I speak to a lot of pet owners who are confused about parasite prevention.
-                        </p> 
-                        <p>
-                            There are many different products on the market and none of them provide protection against every parasite.
-                        </p>
+                        <h3 class="category-heading">Technical project: Parasite prevalence in the USA</h3>
+
+                        <br>
+                        <a href="https://protected-fjord-51277.herokuapp.com/" target="_blank"><strong>Click here to see the project I made for this scholarship</strong></a>
+                        <br>
+                        <br>
+
+                        <p>As a veterinarian, I speak to a lot of pet owners who are confused about parasite prevention.</p>
                         
-                        <p>
-                            Owners need to know which products are required for their pet based on their location.
-                            For this reason, I created a website that pet owners can use to get a better idea of what parasitic diseases are in their area and how best to control them.
-                        </p>
-                        <p>
-                            I made the website using react and bootstrap with an express server.
-                            When the submit button is triggered, a fetch request is sent to /location with the input set as the address argument. 
-                        </p>
-                        <p>
-                            When the submit button is triggered, a fetch request is sent to /location with the input set as the address argument. 
-                        </p>
-                            
-                        <p>
-                            To keep my google API key private, I built a small server using express, it listens to /location and when it receives input, appends my googleAPI key and the address argument to a fetch request sent to google geolocation API. The response is then sent back to my website which converts it into a JSON object.
-                        </p>
-                        <pre>
-                       <code class="language-javascript">
-app.get('/location', (req, res) => {
-    //Listens for request with address as the argument. Sends off request to google geolocation API.
-    const address = req.query.address;
-    const GOOGLEAPI = "********";
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${GOOGLEAPI}`)
-        .then(result => result.text())
-        .then(response => res.send(response))
+                        <p>There are many different products on the market and none of them provide protection against everything. Owners need to know which products are required for their pet based on their location.</p>
+                        
+                        <p>For this reason, I created a website that pet owners can use to get a better idea of what parasitic diseases are in their area.</p>
+                        
+                        <p>I made the website using React and Bootstrap with an Express server.</p>
+                        
+                        <p>When the submit button is pressed, a fetch request is sent to the /location endpoint with the user input set as the query parameter. </p>
+                        
+                        <p>Using Express, I built a server to keep my google API key private and serve the static files. When it receives a request via the /location route, it uses my API key to send a request to Google's geolocation API. </p>
+                        
+                        <pre><code class="language-javascript">
+app.get('/location', (req, res) =&gt; {
+//Listens for request with address as the argument. Sends off request to google geolocation API.
+const address = req.query.address;
+const GOOGLEAPI = "********";
+fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&amp;key=${GOOGLEAPI}`)
+    .then(result =&gt; result.text())
+    .then(response =&gt; res.send(response))
+})
+                        </code></pre>
+                        
+                        <p>The response is sent to the frontend which checks if it is in the USA and extracts the state and <a href="http://county.It">county.</a> This information is uses to obtain location specific data pertaining to each of the parasitic diseases.</p>
+                        
+                        <p>Information about each of the diseases and their prevalence was obtained from publicly available data I retrieved from a website using Node.js. </p>
+                        
+                        <p>By using the network tab in Chrome developer tools, I was able to see that each disease and state is identified by unique query parameters. </p>
+                        
+                        <p>I wrote a small function to gather this information into object literals:</p>
+                        
+                        <pre><code class="language-javascript">
+const diseases = {
+    Lyme: 1,
+    Anaplasmosis: 2,
+    Erlichiosis: 3,
+    Roundworm: 4,
+    Hookworm: 5,
+    Whipworm: 6,
+    Giardia: 7,
+    Heartworm: 8
+};
+
+const statesWithIds = { Alabama: 1,
+    Alaska: 2,
+    Arizona: 3,
+    Arkansas: 4,
+    // ...
+    Wisconsin: 50,
+    Wyoming: 51 
+}
+                        </code></pre>
+                        
+                        <p>For each of the diseases in arrayOfDiseases, I sent a request to their server and saved the response.</p>
+                        
+                        <pre><code class="language-javascript">
+const arrayOfDiseases = Object.keys(diseases);
+for (let disease of arrayOfDiseases){
+
+fetch(`https://maps.capcvet.org/v2/states/infection-risks?disease=${diseases[disease]}&amp;species=1&amp;year=2019`)
+    .then(response =&gt; response.text())
+    .then(info =&gt; {
+        fs.writeFileSync(`state${disease}2018.js`, `export const state${disease}2018 = ${info}`)
     })
-                            </code>
-                        </pre>
+    .then(() =&gt; console.log("done"))
+
+}
+                        </code></pre>
+                        
+                        <p>I then combined all the data into one file to use as the dataset in the main project. I used this to obtain the relevant statistics for the state corresponding to the address entered in the input.</p>
+                        
+                        <p>To assess the risk for fleas, I created a function to check if the state entered is one of the states where fleas are mainly active through summer. I obtained this information manually from other sources. </p>
+                        
+                        <p>In the future, I would like to add data for the individual counties. Ideally, with a much larger dataset I would like to use a database to make retrieving information easier. </p>
+                        
+                        <p>The codebase is also lacking tests. I plan to study how I can implement good testing practices in React. </p>
+                        
+                        <p>Overall, I would like to make it a more personalized experience by factoring in some questions regarding the pet’s lifestyle (eg. if it goes hiking). This way I could also write some functions to give a more personalized product recommendation which could be accompanied with purchase links.</p>
+                        
+                        <p>To see the code:</p>
                     
                         
                     </div>
+                    <div class="row">
+                            <div class="links col-md-4 col-md-offset-2">
+                                    
+                                     
+                                    <a href="https://protected-fjord-51277.herokuapp.com/" target="_blank">
+                                        
+                                        <div class="text-center link-button">
+                                         <img src="/fleabutton.3c1126c9.png" alt="Flea button to live project" height="250px" width="250px">
+                                        </div>
+                                    
+                                    </a>
+                            </div> 
+                            <div class="links col-md-4">
+                                
+                                    <a href="https://github.com/quakerface/ParasitePreventionPicker" target="_blank">
+                                        
+                                        <div class="text-center link-button">
+                                         <img src="/github-button.ff9eccd6.png" alt="Github logo to view code" height="250px" width="250px">
+                                        </div>
+                                    </a> 
+                            </div>
+                           
+                
+                            </div>
+
+                    </div>
+                   
                     
                     
                     
-                </div>
+                </main></div>
                 <div class="row sub-section text-block">
-                    <div class="description-box col-md-4">   
+                    <div class="description-box col-md-10 col-md-offset-1">   
                         <h3 class="category-heading">Space Invaders Game</h3>
-                        <p>
-                        I recently completed the course: "How to code: simple data" on EDX. 
-                        </p>
+                        <p>I recently completed a course on EdX, "How to code: simple data". As the final project for the course, I created a space invaders game using racket, a teaching language based on lisp. Given lisp's lack of loops, I created the entire program using recursive functions. </p>
+
+                        <p>The game runs by manipulating data. Different components are advanced according to their speeds and added or deleted from linked lists according to other events in the game (eg. collisions and key presses). Since racket lists are immutable, a new list was created each time with the addition or absence of components, this made it easy to test the logic of the game.   </p>
+                        
+                        <p>A big-bang function keeps the game going, repeatedly calling an update function that creates new data for the next frame. On each tick of the big bang, new images of your tank, missiles and invaders are rendered to the screen, giving the effect of movement. </p>
+                        
+                        <p>If a missile collides with an invader, both the invader and missile are deleted from their respective linked lists and disappear from the screen. If a missile is fired (with spacebar), a new missile is added to the list of missiles and is therefore rendered to the screen. It is deleted again once it passes through the top of the screen, to avoid the game running out of memory.  </p>
+                        
                        
                     </div>
-                    
-                    <div class="col-md-8">
-                        <p data-height="514" data-theme-id="dark" data-slug-hash="qLOpwm" data-default-tab="css,result" data-user="quakerface" data-pen-title="Cat" class="codepen">See the Pen <a href="https://codepen.io/quakerface/pen/qLOpwm/">Cat</a> by Stacey (<a href="https://codepen.io/quakerface">@quakerface</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-                        <script async="" src="https://static.codepen.io/assets/embed/ei.js"></script>
+                    <div class="links col-md-4 col-md-offset-4">
+                                
+                            <a href="https://github.com/quakerface/SpaceIncadersFinalProject" target="_blank">
+                                
+                                <div class="text-center link-button">
+                                 <img src="/github-button.ff9eccd6.png" alt="Github logo to view code" height="250px" width="250px">
+                                </div>
+                            </a> 
                     </div>
                     
+                   
                 </div>
                 
 
@@ -180,8 +269,7 @@ app.get('/location', (req, res) => {
                                      <img src="/hackerRankLogo.58476bcb.svg" alt="Hackerrank logo" height="250px" width="250px">
                                     </div>
                                 
-                                </a></p>
-                                
+                                </a></p>   
             
                         </div>
 
@@ -200,12 +288,12 @@ app.get('/location', (req, res) => {
 
                
 
-            </main>
+            
             <footer>
                    
               
             </footer>
-        </div>
+        
 
         <script src="/prism.6307abca.js"></script>
         </body>
