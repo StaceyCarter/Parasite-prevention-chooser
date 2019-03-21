@@ -1,0 +1,222 @@
+.name-heading {
+    font-family: 'Playfair Display', serif;
+    padding-top: 6%;
+    padding-bottom: -10%;
+    font-size: 12rem;
+    color: #3A54B4;
+    text-shadow: #172148 2px 0 3px;
+    animation-name: slideInFromLeft;
+    animation-delay: 0s;
+    animation-duration: .8s;
+    
+}
+
+
+
+.sub-heading {
+    font-family: 'Inconsolata', monospace;
+    font-size: 6rem;
+    color: #f2f2f2;
+    text-shadow: white 1px 0 2px;
+    background:  #FF8776 ;
+    padding: 2.5%;
+    border: 2px dashed #F2f2f2;
+    border-radius: 10px;
+    margin: 0% 3%;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.category-heading {
+    font-family: 'Inconsolata', monospace;
+    color: #3A54B4;
+    font-weight: bold;
+    font-size: 2.5rem;
+    
+}
+
+p {
+    color: #172148;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    background: radial-gradient(ellipse at center, white, transparent 75%);
+}
+
+.category-explanation-paragraph {
+    padding: 4% 20% 2% 20%;
+    width: 90%;
+    display: block;
+    margin: auto;
+    font-size: 1.8rem;
+}
+
+body {
+    background: url(lined-paper-2.3fa2980e.png), linear-gradient(0deg, #FEF7ED, rgba(255,202,167,.5) 90%);
+    height: 100%, 100%;
+    margin: 0, 0;
+    background-repeat: repeat, no-repeat;
+    background-attachment: fixed;
+}
+
+
+.sub-section {
+    padding: 5%;
+    background: linear-gradient(0deg, transparent, white 93%, transparent);
+    margin: 2%;
+}
+
+.treehouse:hover, .hacker-rank:hover, .free-code-camp:hover {
+    
+    transform: scale(1.2);
+}
+
+.links {
+   margin-top: 2%;  
+}
+
+.break-line {
+    display: block;
+    color: #FF8776;
+    width: 95%;
+    border-top: 20px dashed #FF8776;
+    margin-top: 10%;
+}
+
+.video {
+    padding: 10% 0 15% 0;
+}
+
+iframe {
+    display: block;
+    margin: 0 auto;
+}
+
+.svg-container {
+    height: 375px;
+    width: 370.3px;
+    margin: 0 auto;
+    animation-name: slideInFromRight;
+    animation-delay: 0s;
+    animation-duration: .8s;
+    
+}
+
+#clothes {
+    fill: blue;
+    stroke:#ff321e;
+    stroke-width:0.53px;
+}
+
+.svg-container:hover #clothes {
+    fill: url(#_linear1);
+}
+
+.svg-container:hover #arm-L {
+    animation-name: happy-arms-L;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    transform-origin: 302.7px 295.7px;
+    animation-timing-function: cubic-bezier(.52,-0.01,.64,1.3);
+    
+}
+
+.svg-container:hover #arm-R {
+    animation-name: happy-arms-R;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    transform-origin: 469.1px 279.2px;
+    animation-timing-function: cubic-bezier(.52,-0.01,.64,1.3);
+}
+
+
+ @keyframes happy-arms-L {
+    0% {
+        transform: rotate(-20deg);
+    }
+    20% {
+        transform: rotate(100deg);
+    }
+    25% {
+        transform: rotate(80deg);
+    }
+    30% {
+        transform: rotate(100deg);
+    }
+    40% {
+        transform: rotate(70deg);
+    }
+    50% {
+        transform: rotate(100deg);
+    }
+    60% {
+        transform: rotate(80deg);
+    }
+    70% {
+        transform: rotate(100deg);
+    }
+    80% {
+        transform: rotate(70deg);
+    }
+    90% {
+        transform: rotate(60deg);
+    }
+    
+
+    100% {
+        transform: rotate(-20deg);
+    }
+} 
+
+@keyframes happy-arms-R {
+    0% {
+        transform: rotate(35deg);
+    }
+    20% {
+        transform: rotate(-85deg);
+    }
+    25% {
+        transform: rotate(-65deg);
+    }
+    30% {
+        transform: rotate(-85deg);
+    }
+    40% {
+        transform: rotate(-55deg);
+    }
+    50% {
+        transform: rotate(-85deg);
+    }
+    60% {
+        transform: rotate(-65deg);
+    }
+    70% {
+        transform: rotate(-85deg);
+    }
+    80% {
+        transform: rotate(-65deg);
+    }
+    90% {
+        transform: rotate(-45deg);
+    }
+  
+
+    100% {
+        transform: rotate(35deg);
+    }
+} 
